@@ -5,17 +5,17 @@ class ApplicationController < Sinatra::Base
 
 
 #all recipes
-  get "/" do
-    recipes = Recipe.all  
-    recipes.to_json()
+  get "/recipe" do
+    recipe = Recipe.all  
+    recipe.to_json()
   end
 #one recipe
- get "/recipes/:pk" do 
-    recipe = Recipe.find_by(id: params[:pk])
+ get "/recipe/:id" do 
+    recipe = Recipe.find(params[:id])
     recipe.to_json()
   end
 #POST a recipe
-post "/recipes/" do
+post "/recipe/" do
     recipe = Recipe.create(
       variety: params[:variety],
       name: params[:name],
@@ -30,10 +30,9 @@ post "/recipes/" do
       "Status": "HTTP_200_OK"
     }.to_json()
   end
-  end
-#UPDATE a recipe
-  patch "/recipes/update/:id" do 
-    recipe = Recipe.find_by(id: params[:id])
+  
+  patch "/recipe/:id" do 
+    recipe = Recipe.find(params[:id])
 
 recipe.update(
       variety: params[:variety],
@@ -48,14 +47,15 @@ recipe.update(
 
 
 #DELETE a recipe
-  delete "/recipes/:id" do 
-    recipe = Recipe.find_by(id: params[:id])
+  delete "/recipe/:id" do 
+    recipe = Recipe.find(params[:id])
     recipe.destroy
-    {
-      "Message": "Successfully Deleted Recipe #{params[:id]}",
-      "Status": "HTTP_Status_OK"
-    }.to_json()
+   
+    recipe.to_json()
+   end
   end
+#UPDATE a recipe
+  
 
   #create user instance
   #  user = User.create(
@@ -65,5 +65,5 @@ recipe.update(
   #  {
   #     "Message": "User created successfully",
   #     "Status": "HTTP_201_created",
-  #  }
-  
+  #  }.to_json
+  # end
