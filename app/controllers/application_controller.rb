@@ -31,6 +31,8 @@ post "/recipe/" do
     }.to_json()
   end
   
+  
+#UPDATE a recipe
   patch "/recipe/:id" do 
     recipe = Recipe.find(params[:id])
 
@@ -53,17 +55,35 @@ recipe.update(
    
     recipe.to_json()
    end
+   # Save User
+   post "/user/:id" do
+  existing_user = User.find(params[:id])
+  # check if user exists
+  if existing_user
+    return {"error":"User Already Existing"}.to_json
   end
-#UPDATE a recipe
+end
+   #create user instance
+   post "/users/create" do
+   user = User.create(
+    name: params[:name],
+  
+  )
+  user.to_json
+  
+end
+# get users
+get "/users" do
+  user = User.all
+  user.to_json
+end
+ #get one user
+get "/users/:id" do
+  user = User.find(params[:id])
+  user.to_json
+end
+  end
+
   
 
-  #create user instance
-  #  user = User.create(
-  #   name: params[:name],
-  #  )
-  #  user.save
-  #  {
-  #     "Message": "User created successfully",
-  #     "Status": "HTTP_201_created",
-  #  }.to_json
-  # end
+  
