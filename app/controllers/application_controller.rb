@@ -35,14 +35,14 @@ post "/recipes/" do
   patch "/recipes/update/:id" do 
     recipe = Recipe.find_by(id: params[:id])
 
-    recipe.update(
+recipe.update(
       variety: params[:variety],
       name: params[:name],
       image: params[:image],
       ingredients: params[:ingredients],
      instructions: params[:instructions]
     )
-
+    
     recipe.to_json()
   end
 
@@ -52,7 +52,18 @@ post "/recipes/" do
     recipe = Recipe.find_by(id: params[:id])
     recipe.destroy
     {
-      "message":"Successfully Deleted Recipe #{params[:id]}",
-      "Status":"HTTP_Status_OK"
+      "Message": "Successfully Deleted Recipe #{params[:id]}",
+      "Status": "HTTP_Status_OK"
     }.to_json()
   end
+
+  #create user instance
+  #  user = User.create(
+  #   name: params[:name],
+  #  )
+  #  user.save
+  #  {
+  #     "Message": "User created successfully",
+  #     "Status": "HTTP_201_created",
+  #  }
+  
