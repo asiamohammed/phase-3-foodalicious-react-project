@@ -7,11 +7,13 @@ class ApplicationController < Sinatra::Base
     recipe = Recipe.all  
     recipe.to_json()
   end
+
 #one recipe
  get "/recipe/:id" do 
     recipe = Recipe.find_by(id:params[:id])
     recipe.to_json()
   end
+  
 #POST a recipe
 post "/recipe/" do
     recipe = Recipe.create(
