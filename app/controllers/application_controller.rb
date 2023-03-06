@@ -75,6 +75,7 @@ get "/users" do
   user = User.all
   user.to_json
 end
+
  #get one user
 get "/users/:id" do
   user = User.find(params[:id])
