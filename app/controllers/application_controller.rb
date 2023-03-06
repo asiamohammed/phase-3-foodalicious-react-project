@@ -2,8 +2,6 @@ class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
   # Add your routes here
-
-
 #all recipes
   get "/recipe" do
     recipe = Recipe.all  
