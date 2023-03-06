@@ -13,7 +13,7 @@ class ApplicationController < Sinatra::Base
     recipe = Recipe.find_by(id:params[:id])
     recipe.to_json()
   end
-  
+
 #POST a recipe
 post "/recipe/" do
     recipe = Recipe.create(
@@ -63,6 +63,7 @@ recipe.update(
     return {"error":"User Already Existing"}.to_json
   end
 end
+
    #create user instance
    post "/users/create" do
    user = User.create(
