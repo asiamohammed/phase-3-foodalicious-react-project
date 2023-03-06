@@ -11,7 +11,7 @@ class ApplicationController < Sinatra::Base
   end
 #one recipe
  get "/recipe/:id" do 
-    recipe = Recipe.find(params[:id])
+    recipe = Recipe.find_by(id:params[:id])
     recipe.to_json()
   end
 #POST a recipe
