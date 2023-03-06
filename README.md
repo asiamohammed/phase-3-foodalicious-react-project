@@ -4,7 +4,7 @@
 Asia Mohamed
 
 # Description
-This is a Sinatra API backend that uses Active Record to access and persist data in a database, which will be used by a React frontend (https://github.com/asiamohammed/Foodalicious)that interacts with the database via the API.
+This is a Sinatra API backend that uses Active Record to access and persist data in a database, which will be used by a React frontend (https://github.com/asiamohammed/Foodalicious) that interacts with the database via the API.
 
 # Technologies Used
 * Ruby<br>
